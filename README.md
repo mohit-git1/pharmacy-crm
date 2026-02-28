@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Pharmacy CRM
 
 A full-stack pharmacy management application built with **FastAPI** (Python) and **React** (JavaScript).
@@ -278,3 +279,6 @@ The backend automatically computes medicine status on every create/update:
 - Complete medicine table with search, filter panel, and sortable columns
 - Add / Edit / Delete medicine functionality
 - Export to CSV, PDF, DOC
+=======
+# pharmacy-crm
+>>>>>>> 0caeabf31fcd7f7dcc57d4e5fd5c4dca005d77cc
