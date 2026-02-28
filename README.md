@@ -15,7 +15,7 @@ README.md    → Documentation and API contracts
 
 ---
 
-## Running the Project
+## Running the Project Locally
 
 ### Backend
 ```bash
