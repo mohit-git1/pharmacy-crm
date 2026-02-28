@@ -4,7 +4,7 @@
 | Service | URL |
 |---------|-----|
 | Frontend | https://pharmacy-crm-psi.vercel.app/ |
-| Backend API | https://pharmacy-crm-1.onrender.com |
+| Backend API | https://pharmacy-crm-1.onrender.com/docs |
 
 ## Project Structure
 ```
