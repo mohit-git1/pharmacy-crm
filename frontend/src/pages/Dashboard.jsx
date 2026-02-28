@@ -10,10 +10,13 @@ function Dashboard() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
 
-    // Sale form state
-    const [patientName, setPatientName] = useState("");
-    const [paymentMethod, setPaymentMethod] = useState("Cash");
-    const [cart, setCart] = useState([]);
+    // Sale form state — restored from sessionStorage so navigation doesn't lose data
+    const [patientName, setPatientName] = useState(() => sessionStorage.getItem("sale_patient") || "");
+    const [paymentMethod, setPaymentMethod] = useState(() => sessionStorage.getItem("sale_payment") || "Cash");
+    const [cart, setCart] = useState(() => {
+        try { return JSON.parse(sessionStorage.getItem("sale_cart")) || []; }
+        catch { return []; }
+    });
     const [medSearch, setMedSearch] = useState("");
     const [suggestions, setSuggestions] = useState([]);
     const [showSuggestions, setShowSuggestions] = useState(false);
@@ -21,6 +24,11 @@ function Dashboard() {
     const [saleSuccess, setSaleSuccess] = useState("");
     const [submitting, setSubmitting] = useState(false);
     const suggestRef = useRef(null);
+
+    // Persist sale form to sessionStorage on change
+    useEffect(() => { sessionStorage.setItem("sale_patient", patientName); }, [patientName]);
+    useEffect(() => { sessionStorage.setItem("sale_payment", paymentMethod); }, [paymentMethod]);
+    useEffect(() => { sessionStorage.setItem("sale_cart", JSON.stringify(cart)); }, [cart]);
 
     function loadData() {
         setLoading(true);
@@ -133,6 +141,9 @@ function Dashboard() {
             setPatientName("");
             setPaymentMethod("Cash");
             setCart([]);
+            sessionStorage.removeItem("sale_patient");
+            sessionStorage.removeItem("sale_payment");
+            sessionStorage.removeItem("sale_cart");
             loadData();
         } catch (err) {
             var msg = "Sale failed";
